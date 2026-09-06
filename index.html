@@ -1575,8 +1575,37 @@
             border-color: #a7ffee;
         }
 
-        /* REMOVED butterfly-instruction styles */
-        /* .butterfly-instruction removed */
+        /* ===== BUTTERFLY TUTORIAL TEXT (SMALL FLOATING HINT) ===== */
+        .butterfly-hint {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            padding: 8px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            pointer-events: none;
+            font-family: system-ui, 'Segoe UI', sans-serif;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+            white-space: nowrap;
+        }
+        .butterfly-hint.show {
+            opacity: 1;
+        }
+        .butterfly-hint .icon {
+            display: inline-block;
+            margin-right: 6px;
+            font-size: 0.9rem;
+        }
 
         /* ===== COMPLETION MESSAGE (GIFT BOX) ===== */
         .completion-msg {
@@ -1723,7 +1752,7 @@
             letter-spacing: 2px;
         }
 
-        /* ===== VIDEO POPUP (after gift explosion) ===== */
+        /* ===== VIDEO POPUP ===== */
         .video-popup {
             position: fixed;
             top: 50%;
@@ -1772,6 +1801,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .video-popup .video-close.show {
+            opacity: 1;
+            pointer-events: auto;
         }
         .video-popup .video-close:hover {
             transform: scale(1.15) rotate(90deg);
@@ -1808,7 +1843,7 @@
             opacity: 0;
         }
 
-        /* ===== ENVELOPE & LETTER (BIG VERSION) ===== */
+        /* ===== ENVELOPE & LETTER (BIGGER VERSION) ===== */
         .envelope-container {
             position: fixed;
             top: 50%;
@@ -1819,8 +1854,8 @@
             transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
             pointer-events: none;
             cursor: pointer;
-            width: 500px;
-            height: 340px;
+            width: 620px;
+            height: 420px;
         }
         .envelope-container.active {
             transform: translate(-50%, -50%) scale(1);
@@ -1838,7 +1873,7 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(145deg, #f5e6d3, #e8d5c4);
-            border-radius: 12px 12px 0 0;
+            border-radius: 16px 16px 0 0;
             box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 60px rgba(255,215,0,0.15);
             border: 3px solid #d4b8a0;
             transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -1862,7 +1897,7 @@
             height: 100%;
             background: linear-gradient(145deg, #f5e6d3, #dcc8b8);
             clip-path: polygon(0 0, 50% 55%, 100% 0);
-            border-radius: 12px 12px 0 0;
+            border-radius: 16px 16px 0 0;
             transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
             transform-origin: top center;
             border-bottom: 3px solid #d4b8a0;
@@ -1875,11 +1910,11 @@
         }
         .envelope .seal {
             position: absolute;
-            top: 50px;
+            top: 60px;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             background: radial-gradient(circle, #ffd700, #cc8800);
             border-radius: 50%;
             box-shadow: 0 0 40px rgba(255,215,0,0.5), inset 0 -3px 6px rgba(0,0,0,0.2);
@@ -1893,7 +1928,7 @@
         }
         .envelope .seal::after {
             content: '❤️';
-            font-size: 26px;
+            font-size: 32px;
         }
         .envelope .seal.hide-seal {
             opacity: 0;
@@ -1902,10 +1937,10 @@
         }
         .envelope .stamp {
             position: absolute;
-            top: 18px;
-            right: 24px;
-            width: 50px;
-            height: 60px;
+            top: 20px;
+            right: 28px;
+            width: 60px;
+            height: 70px;
             background: linear-gradient(145deg, #ff6b9d, #cc3377);
             border-radius: 6px;
             box-shadow: 0 3px 12px rgba(0,0,0,0.25);
@@ -1913,7 +1948,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 26px;
+            font-size: 30px;
             color: #fff;
             transform: rotate(6deg);
             z-index: 2;
@@ -1923,18 +1958,18 @@
         }
         .envelope .letter-paper {
             position: absolute;
-            bottom: 20px;
+            bottom: 25px;
             left: 50%;
             transform: translateX(-50%) scale(0.9);
-            width: 88%;
-            height: 78%;
+            width: 90%;
+            height: 80%;
             background: #fff8f0;
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: 0 6px 30px rgba(0,0,0,0.2);
-            padding: 30px 28px;
+            padding: 35px 32px;
             font-family: 'Georgia', serif;
-            font-size: 16px;
-            line-height: 1.7;
+            font-size: 18px;
+            line-height: 1.8;
             color: #3a2a1a;
             opacity: 0;
             transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -1950,32 +1985,32 @@
         }
         .envelope .letter-paper.show {
             opacity: 1;
-            transform: translateX(-50%) scale(1) translateY(-12px);
+            transform: translateX(-50%) scale(1) translateY(-15px);
             pointer-events: auto;
         }
         .envelope .letter-paper h3 {
-            font-size: 24px;
+            font-size: 28px;
             color: #b3004a;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             font-weight: 700;
             letter-spacing: 1px;
         }
         .envelope .letter-paper p {
-            font-size: 16px;
+            font-size: 18px;
             color: #4a3a2a;
             margin: 6px 0;
             max-width: 90%;
         }
         .envelope .letter-paper .heart-sign {
             color: #ff2d75;
-            font-size: 30px;
-            margin-top: 6px;
+            font-size: 34px;
+            margin-top: 8px;
         }
         .envelope .letter-paper .sub-text {
-            font-size: 14px;
+            font-size: 16px;
             color: #8a7a6a;
             font-style: italic;
-            margin-top: 8px;
+            margin-top: 10px;
         }
 
         /* ===== ENVELOPE INSTRUCTION TEXT ===== */
@@ -2136,8 +2171,15 @@
                 right: 10px;
             }
             
-            /* Fix instruction overlay - REMOVED */
-
+            /* Fix butterfly hint */
+            .butterfly-hint {
+                font-size: 0.7rem;
+                padding: 6px 14px;
+                bottom: 16px;
+                white-space: normal;
+                max-width: 90vw;
+            }
+            
             /* Fix gift box */
             .gift-box {
                 width: 120px;
@@ -2193,48 +2235,48 @@
                 right: -10px;
             }
             
-            /* Fix envelope */
+            /* Fix envelope - BIGGER on mobile */
             .envelope-container {
-                width: 88vw;
-                max-width: 360px;
+                width: 92vw;
+                max-width: 420px;
                 height: auto;
-                aspect-ratio: 500/340;
+                aspect-ratio: 620/420;
             }
             .envelope .letter-paper {
-                padding: 14px 14px;
-                font-size: 12px;
+                padding: 16px 14px;
+                font-size: 14px;
             }
             .envelope .letter-paper h3 {
-                font-size: 17px;
-                margin-bottom: 6px;
+                font-size: 20px;
+                margin-bottom: 8px;
             }
             .envelope .letter-paper p {
-                font-size: 12px;
+                font-size: 14px;
                 margin: 4px 0;
             }
             .envelope .letter-paper .heart-sign {
-                font-size: 22px;
+                font-size: 26px;
             }
             .envelope .letter-paper .sub-text {
-                font-size: 11px;
+                font-size: 13px;
             }
             .envelope .seal {
-                width: 36px;
-                height: 36px;
-                top: 26%;
+                width: 40px;
+                height: 40px;
+                top: 24%;
             }
             .envelope .seal::after {
-                font-size: 18px;
+                font-size: 20px;
             }
             .envelope .stamp {
-                width: 32px;
-                height: 40px;
+                width: 36px;
+                height: 44px;
                 top: 10px;
                 right: 12px;
-                font-size: 18px;
+                font-size: 20px;
             }
             .envelope .stamp::after {
-                font-size: 17px;
+                font-size: 18px;
             }
             
             /* Fix video/envelope instruction text */
@@ -2333,35 +2375,39 @@
                 top: -5px;
             }
             .envelope-container {
-                max-width: 300px;
+                max-width: 340px;
             }
             .envelope .letter-paper {
-                padding: 10px 10px;
-                font-size: 10px;
+                padding: 12px 10px;
+                font-size: 12px;
             }
             .envelope .letter-paper h3 {
-                font-size: 14px;
+                font-size: 17px;
             }
             .envelope .letter-paper p {
-                font-size: 10px;
+                font-size: 12px;
             }
             .envelope .seal {
-                width: 30px;
-                height: 30px;
-                top: 25%;
+                width: 32px;
+                height: 32px;
+                top: 22%;
             }
             .envelope .seal::after {
-                font-size: 15px;
+                font-size: 16px;
             }
             .envelope .stamp {
-                width: 26px;
-                height: 32px;
+                width: 28px;
+                height: 34px;
                 top: 8px;
                 right: 10px;
-                font-size: 14px;
+                font-size: 16px;
             }
             .envelope .stamp::after {
-                font-size: 13px;
+                font-size: 14px;
+            }
+            .butterfly-hint {
+                font-size: 0.6rem;
+                padding: 4px 10px;
             }
             .happy-message {
                 font-size: 1.2rem;
@@ -2423,7 +2469,7 @@
                 max-height: 55vh;
             }
             .envelope-container {
-                max-width: 280px;
+                max-width: 320px;
             }
             .gift-box {
                 width: 80px;
@@ -2457,7 +2503,11 @@
                 bottom: 12px;
                 letter-spacing: 2px;
             }
-
+            .butterfly-hint {
+                font-size: 0.6rem;
+                padding: 4px 10px;
+                bottom: 8px;
+            }
             .video-instruction {
                 font-size: 0.7rem;
                 padding: 4px 12px;
@@ -2484,34 +2534,34 @@
                 display: none;
             }
             .envelope .letter-paper {
-                padding: 8px 10px;
-                font-size: 9px;
+                padding: 10px 10px;
+                font-size: 11px;
             }
             .envelope .letter-paper h3 {
-                font-size: 12px;
+                font-size: 15px;
                 margin-bottom: 4px;
             }
             .envelope .letter-paper p {
-                font-size: 9px;
+                font-size: 11px;
                 margin: 2px 0;
             }
             .envelope .seal {
-                width: 24px;
-                height: 24px;
-                top: 24%;
+                width: 26px;
+                height: 26px;
+                top: 22%;
             }
             .envelope .seal::after {
-                font-size: 12px;
+                font-size: 13px;
             }
             .envelope .stamp {
-                width: 22px;
-                height: 28px;
+                width: 24px;
+                height: 30px;
                 top: 6px;
                 right: 8px;
-                font-size: 12px;
+                font-size: 14px;
             }
             .envelope .stamp::after {
-                font-size: 11px;
+                font-size: 12px;
             }
         }
 
@@ -2566,16 +2616,18 @@
                 bottom: 30px;
             }
             .envelope-container {
-                max-width: 400px;
+                max-width: 480px;
             }
             .video-popup {
                 max-width: 85vw;
                 width: 500px;
             }
-
+            .butterfly-hint {
+                font-size: 0.8rem;
+            }
         }
 
-        /* Large screens - keep original */
+        /* Large screens - keep original with bigger envelope */
         @media (min-width: 1200px) {
             .flowers {
                 transform: scale(0.7);
@@ -2626,13 +2678,16 @@
                 bottom: 40px;
             }
             .envelope-container {
-                width: 500px;
-                height: 340px;
+                width: 620px;
+                height: 420px;
             }
             .video-popup {
                 width: 700px;
             }
-
+            .butterfly-hint {
+                font-size: 0.9rem;
+                padding: 10px 24px;
+            }
         }
 
         /* Dark mode fix for mobile */
@@ -2703,8 +2758,10 @@
             <div class="wind-particle"></div>
         </div>
 
-        <!-- ===== BUTTERFLY INSTRUCTION OVERLAY - REMOVED ===== -->
-        <!-- The instruction overlay has been removed as requested -->
+        <!-- ===== BUTTERFLY HINT (TUTORIAL TEXT - SMALL FLOATING) ===== -->
+        <div class="butterfly-hint show" id="butterflyHint">
+            <span class="icon">🦋</span> Нажми на бабочек, чтобы увидеть их красоту ✨
+        </div>
 
         <div class="flowers">
             <!-- YOUR ORIGINAL FLOWERS (UNTOUCHED) -->
@@ -3319,16 +3376,16 @@
         <!-- ===== VIDEO POPUP ===== -->
         <div class="video-popup" id="videoPopup">
             <video id="videoPlayer" controls autoplay muted playsinline>
-                <source src="karina.mp4" type="video/mp4">
+                <source src="karinaclipedit.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <button class="video-close" id="videoClose">✕</button>
         </div>
 
         <!-- ===== VIDEO INSTRUCTION ===== -->
-        <div class="video-instruction" id="videoInstruction">📽️ Закрой видео, чтобы увидеть конверт</div>
+        <div class="video-instruction" id="videoInstruction">📽️ Посмотрите полное видео, чтобы увидеть конверт.</div>
 
-        <!-- ===== ENVELOPE CONTAINER (BIG VERSION) ===== -->
+        <!-- ===== ENVELOPE CONTAINER (BIGGER VERSION) ===== -->
         <div class="envelope-container" id="envelopeContainer">
             <div class="envelope" id="envelope">
                 <div class="flap" id="envelopeFlap"></div>
@@ -3360,8 +3417,16 @@
                 }, 1000);
             };
 
-            // ===== BUTTERFLY INSTRUCTION OVERLAY - REMOVED =====
-            // Instruction overlay no longer exists, so no need to handle it
+            // ===== BUTTERFLY HINT AUTO-HIDE AFTER FIRST CLICK =====
+            const butterflyHint = document.getElementById('butterflyHint');
+            let hintHidden = false;
+
+            function hideHint() {
+                if (!hintHidden) {
+                    butterflyHint.classList.remove('show');
+                    hintHidden = true;
+                }
+            }
 
             // ===== GLITTER EXPLOSION =====
             function createGlitterExplosion(x, y, count = 40) {
@@ -3427,6 +3492,7 @@
             let typeInterval = null;
             let videoEnded = false;
             let envelopeShown = false;
+            let videoFullyWatched = false;
 
             const popupAnimations = ['popup-anim-1', 'popup-anim-2', 'popup-anim-3', 'popup-anim-4', 'popup-anim-5'];
 
@@ -3484,6 +3550,9 @@
                     // Prevent clicking if envelope is open
                     if (document.body.classList.contains('envelope-open')) return;
                     if (this.classList.contains('hidden') || isPopupOpen) return;
+                    
+                    // Hide hint on first click
+                    hideHint();
                     
                     const rect = this.getBoundingClientRect();
                     const cx = rect.left + rect.width / 2;
@@ -3557,8 +3626,13 @@
                 setTimeout(() => {
                     videoPopup.classList.add('active');
                     videoInstruction.classList.add('show');
+                    // Reset video to start and play
+                    videoPlayer.currentTime = 0;
                     videoPlayer.muted = false;
                     videoPlayer.play().catch(() => {});
+                    // Hide close button initially
+                    videoClose.classList.remove('show');
+                    videoFullyWatched = false;
                 }, 400);
 
                 setTimeout(() => {
@@ -3570,9 +3644,27 @@
                 }, 600);
             });
 
-            // ===== FUNCTION TO SHOW ENVELOPE (only after video is closed) =====
+            // ===== VIDEO ENDED → SHOW CLOSE BUTTON =====
+            videoPlayer.addEventListener('ended', function() {
+                videoFullyWatched = true;
+                videoClose.classList.add('show');
+                videoInstruction.textContent = '';
+            });
+
+            // ===== VIDEO TIME UPDATE - check if near end =====
+            videoPlayer.addEventListener('timeupdate', function() {
+                if (videoPlayer.duration && videoPlayer.currentTime >= videoPlayer.duration - 0.5) {
+                    if (!videoFullyWatched) {
+                        videoFullyWatched = true;
+                        videoClose.classList.add('show');
+                        videoInstruction.textContent = '✅ Video finished — click ✕ to close';
+                    }
+                }
+            });
+
+            // ===== FUNCTION TO SHOW ENVELOPE (only after video is fully watched) =====
             function showEnvelope() {
-                if (!envelopeShown) {
+                if (!envelopeShown && videoFullyWatched) {
                     envelopeShown = true;
                     videoInstruction.classList.remove('show');
                     envelopeContainer.classList.remove('closing');
@@ -3593,24 +3685,31 @@
                 }
             }
 
-            // ===== VIDEO CLOSE (manual) =====
+            // ===== VIDEO CLOSE (manual) - only if video fully watched =====
             videoClose.addEventListener('click', function(e) {
                 e.stopPropagation();
+                if (!videoFullyWatched) return;
+                
                 videoPlayer.pause();
                 videoPopup.classList.remove('active');
                 videoInstruction.classList.remove('show');
                 videoPlayer.muted = true;
+                videoClose.classList.remove('show');
                 showEnvelope();
             });
 
             document.addEventListener('click', function(e) {
                 if (videoPopup.classList.contains('active')) {
                     if (!e.target.closest('.video-popup')) {
-                        videoPlayer.pause();
-                        videoPopup.classList.remove('active');
-                        videoInstruction.classList.remove('show');
-                        videoPlayer.muted = true;
-                        showEnvelope();
+                        // Only close if video fully watched
+                        if (videoFullyWatched) {
+                            videoPlayer.pause();
+                            videoPopup.classList.remove('active');
+                            videoInstruction.classList.remove('show');
+                            videoPlayer.muted = true;
+                            videoClose.classList.remove('show');
+                            showEnvelope();
+                        }
                     }
                 }
             });
